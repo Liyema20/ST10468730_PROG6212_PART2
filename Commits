@@ -1,0 +1,23 @@
+Create RaceDay.This is a swagger-based project.It is an Api project with Swagger.
+Add EF Core packages and folder structure
+Calculate the sum of the elements in a roles and user model.
+Event and Category models are added
+Add the models Enrolment and Result
+Add relationships and the seeder for roles to RaceDayDbContext.
+Set connection string, cookie auth and swagger in program.cs.
+Add InitialCreate migration
+For including user id of the user logged on, add a claims extension to logon RecordType.Add a claims extension to the RecordType for logged on user id.
+Add auth DTOs
+Add AuthController (Register, Login, Logout)
+Add profile endpoints
+Here are that, add event and category DTOs.
+This requires adding in EventsController with organiser ownership checks.
+Add CategoriesController
+Create enrolment and result DTO.
+Add EnrolmentsController
+Add ResultsController
+Add RaceDay.Tests project and test helpers
+Add unit tests for auth and profile() to test them.
+Add event & category level unit tests.
+Definitely add enrolment and result unit tests.
+Add GitHub Actions workflow
