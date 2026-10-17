@@ -1,4 +1,4 @@
-name: CI
+ name: CI
 
 on:
   push:
@@ -17,16 +17,23 @@ jobs:
           test -d docs
           test -f README.md
 
+      - name: Locate test project
+        run: |
+          PROJ=$(find . -name "RaceDay.Tests.csproj" | head -n 1)
+          echo "Found: $PROJ"
+          test -n "$PROJ"
+          echo "TEST_PROJECT=$PROJ" >> "$GITHUB_ENV"
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
       - name: Restore
-        run: dotnet restore RaceDay.Tests/RaceDay.Tests.csproj
+        run: dotnet restore "$TEST_PROJECT"
 
       - name: Build
-        run: dotnet build RaceDay.Tests/RaceDay.Tests.csproj --no-restore -c Release
+        run: dotnet build "$TEST_PROJECT" --no-restore -c Release
 
       - name: Run unit tests
-        run: dotnet test RaceDay.Tests/RaceDay.Tests.csproj --no-build -c Release --verbosity normal
+        run: dotnet test "$TEST_PROJECT" --no-build -c Release --verbosity normal
